@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TARUMT FAQ Bot</title>
+  <script src="https://cdn.jsdelivr.net/npm/rasa-webchat/lib/index.js"></script>
+</head>
+<body>
+  <h1 style="text-align:center;">Welcome to TARUMT FAQ Bot</h1>
+  <p style="text-align:center;">Ask me anything about TARUMT 😊</p>
+
+  <script>
+    WebChat.default({
+      initPayload: "/greet",
+      socketUrl: "https://d1adf17b897f.ngrok-free.app",  // replace with your ngrok link
+      socketPath: "/socket.io/",
+      title: "FAQ Bot",
+      subtitle: "Powered by Rasa",
+      showCloseButton: true
+    }, null);
+  </script>
+</body>
+</html>
