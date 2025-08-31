@@ -1,0 +1,960 @@
+version: "3.1"
+
+intents:
+  # Default
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - faq
+  
+#   # General Enquiries
+#   - faq/campus_location
+#   - faq/contact_info
+#   - faq/about_tarumt
+#   - faq/operating_hours
+#   - faq/attire
+#   - faq/attire_penalty
+#   - faq/smoking
+#   - faq/student_portal
+#   - faq/forget_pass_login
+#   - faq/survey
+
+#   # Admission & Registration
+#   - faq/course_enrollment
+#   - faq/course_requirement
+#   - faq/intakes
+#   - faq/student_ID_card
+#   - faq/international_application
+
+#   # Fee & Financial Aid
+#   - faq/scholarship_available
+#   - faq/tuition_fees
+#   - faq/misc_fees
+#   - faq/pay_fees
+#   - faq/financial_aid
+#   - faq/ptptn_info
+
+#   # Facilities & Services
+#   - faq/vehicle_pass
+#   - faq/bus_schedule_sgnibong
+#   - faq/bus_schedule_jetty
+#   - faq/bus_schedule_farlim
+#   - faq/facilities_book
+#   - faq/facilities_list
+#   - faq/student_support
+#   - faq/library
+#   - faq/map
+
+#   # Academic Calender & Examination
+#   - faq/timetable
+#   - faq/academic_calender
+#   - faq/exam_slip
+#   - faq/exam_timetable
+#   - faq/exam_rules
+#   - faq/exam_grading
+#   - faq/exam_result
+#   - faq/exam_resit
+#   - faq/exam_appeal
+#   - faq/barred
+#   - faq/barred_list
+#   - faq/barred_check
+#   - faq/barred_solution
+
+responses:
+  utter_greet:
+  - text: |
+      Hello! 👋 
+      Welcome to TAR UMT FAQ Chatbot. I’m here to help with your queries on admissions, programs, fees, scholarships, and more. How can I assist you today?
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Thank you for using TARUMT FAQ Chatbot! 🙏"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+# General Enquiries
+  utter_fallback:
+  - text: |
+      I'm sorry, I didn't quite catch that.
+      Could you please rephrase your question or try asking something else related to TAR UMT?
+      You can ask about admissions, fees, campus facilities, academic calendar, and more!
+  - text: |
+      I'm sorry, I didn't quite catch that. Could you please rephrase your question or provide more details?
+      If you'd like, here are a few topics I can help you with:
+      • Admission and registration
+      • Tuition and fees
+      • Campus facilities and services
+      • Exam schedules and academic calendar
+      • Anything else about TAR UMT
+
+  utter_faq/campus_location:
+  - text: |
+      Tunku Abdul Rahman University of Management and Technology (TAR UMT) currently has one main campus in Kuala Lumpur, plus five branch campuses across Malaysia:
+
+      Main Campus (Kuala Lumpur)  
+      Website: https://www.tarc.edu.my/kl/  
+      📍Location: Ground Floor, Bangunan Tan Sri Khaw Kai Boh (Block A), Jalan Genting Kelang, Setapak, 53300 Kuala Lumpur, Federal Territory of Kuala Lumpur
+
+      Penang Branch (Tanjung Bungah)  
+      Website: https://penang.tarc.edu.my/  
+      📍Location: 77, Lorong Lembah Permai 3, 11200 Tanjung Bungah, Pulau Pinang
+
+      Perak Branch (Kampar)  
+      Website: https://perak.tarc.edu.my/  
+      📍Location: Jln Kolej, Taman Bandar Baru, 31900 Kampar, Perak
+
+      Johor Branch (Segamat)  
+      Website: https://johor.tarc.edu.my/  
+      📍Location: Jalan Segamat / Labis, 85000, Segamat, Johor, 85000 Segamat District, Johor
+
+      Pahang Branch (Kuantan)  
+      Website: https://pahang.tarc.edu.my/  
+      📍Location: Jalan IM 9/2, Bandar Indera Mahkota, 25200 Kuantan, Pahang
+
+      Sabah Branch (Kota Kinabalu)  
+      Website: https://sabah.tarc.edu.my/  
+      📍Location: No.1, Jalan Alamesra, Alamesra, 88450 Kota Kinabalu, Sabah
+
+  utter_faq/contact_info:
+  - text: |
+      You can contact TAR UMT’s Penang Campus by:
+      📞 Phone at +604-899 5230.
+      ✉️ Email us at penang@tarc.edu.my.
+      🌐 Website at https://penang.tarc.edu.my/contact-us
+      
+      Our hotline is open during working hours from Monday to Friday, 8.30am to 5.30pm.
+      You may also directly visit our campus during working hours for consultation.
+  
+  utter_faq/about_tarumt:
+  - text: |
+      📙 TAR UMT stands for Tunku Abdul Rahman University of Management and Technology. It is a leading private university in Malaysia known for its quality education and affordable fees.
+      📙 TAR UMT was established in 1969 and has produced more than 270,000 graduates since its inception.
+      📙 TAR UMT offers a wide range of programmes from Foundation to Postgraduate levels in fields like Business, Engineering, Computing, and Social Science.
+      📙 The university is well-recognised for its emphasis on academic excellence, industry relevance, and graduate employability.
+      📙 TAR UMT was founded by the Malaysian Chinese Association (MCA) and continues to provide accessible and quality education to all Malaysians. 
+      
+      In general, TAR UMT is an affordable and quality private university providing various courses, with the aim to train students to achieve excellence in both academic and practical skills. 
+
+  utter_faq/operating_hours:
+  - text: |
+      TAR UMT’s general operating hours are Monday to Friday, from <8:30 AM to 5:30 PM>.
+
+      # Note:
+      ⛔ The campus is usually closed on Saturdays, Sundays, and public holidays.
+      ⌚ For visits or appointments, we recommend coming during working hours.
+      ⚠️ Please note that different departments may have specific operating schedules 
+      ✅ You can still reach out via email outside of office hours, and we’ll get back to you on the next working day.
+
+  utter_faq/attire:
+  - text: |
+      General Attire Guidelines for TAR UMT Students:
+      While not always enforced strictly on a daily basis, here are common expectations:
+
+      ✅ Appropriate Attire (Usually Allowed):
+      1️⃣ T-shirts / Polo shirts (no offensive wording or graphics)
+      2️⃣Jeans or long pants
+      3️⃣Blouses, shirts, or modest tops
+      4️⃣Covered shoes or sandals with back straps
+
+      ❌ Commonly Not Allowed:
+      1️⃣Short skirts, hot pants, or very short pants
+      2️⃣Sleeveless tops / Spaghetti straps
+      3️⃣Slippers / Flip-flops
+      4️⃣Clothing with offensive text/images
+      5️⃣Excessively torn or revealing attire
+
+      🧪 Special Cases:
+      1️⃣Lab Work / Practical Classes
+      2️⃣Lab coats and closed shoes are usually required.
+      3️⃣No sandals or skirts for safety reasons.
+
+      👤Formal Presentations / Industrial Training
+      ➡Required to wear formal or office attire: long pants, button-up shirts/blouses, and leather shoes.
+
+      ⚽Sport Activities
+      ➡Sports attire is allowed, but usually only during PE classes or club activities.
+
+  utter_faq/attire_penalty:
+  - text: |
+      🏫 TAR UMT Official Policy on Discipline
+      From the TAR UMT Student Dress Code:
+
+      Students are expected to dress according to the guidelines (e.g., collared shirts, no torn jeans, proper footwear).
+      Disciplinary actions will be taken against those who flout any dress or behavior rules—but no specific penalties (e.g., fines or warning thresholds) are provided in the publicly available code. 
+      ⚠️This means the policy authorizes enforcement, but doesn’t list details such as warning limits or fine amounts.
+      🔄 Insights from Other Institutions (For Reference)
+      
+      While TAR UMT doesn’t specify penalties by name, similar Malaysian universities often impose:
+      💲A first offence: warning + fine up to ~RM50
+      Repeated offences: disciplinary referral to a Student Disciplinary Committee 
+      So it’s possible that TAR UMT applies a comparable framework, but this is not confirmed via official sources.
+
+      Students are not allowed to enter specific facilities such as labs if they do not follow the dress code.
+
+  utter_faq/smoking:
+  - text: |
+      🚭 Smoking & Vaping Policy
+      According to TAR UMT’s Student Dress Code and regulations:
+      The entire campus is designated a non‑smoking and non‑vaping zone. This applies to both traditional cigarettes and electronic smoking devices. 
+      Smoking, vaping, or using any tobacco product anywhere on campus—including indoors, outdoors, dorms, and transit areas—is strictly prohibited. 
+      Disciplinary measures may be taken if the rules are violated. 
+
+  utter_faq/student_portal:
+  - text: |
+      You can log into the Student Intranet Portal at: https://web.tarc.edu.my/portal/login.jsp
+
+      Use your Student ID and password provided during registration.
+
+      If you’re a new student, please check your email for login credentials.
+
+  utter_faq/forget_pass_login:
+  - text: |
+      If you have trouble logging into the intranet or forgot your login password:
+      1️⃣ Go to intranet login page https://web.tarc.edu.my/portal/login.jsp , then locate the "I forgot my password" option at the bottom.
+      2️⃣ Click the button then login to intranet using NRIC (without dash)
+      3️⃣ Reset your intranet password
+
+      If the issue still persists, please seek help from TAR UMT staff.
+
+  utter_faq/survey:
+  - text: |
+      📒 The Services Survey at TAR UMT is an annual feedback initiative where students can evaluate and provide opinions on the quality of services offered by various departments. This helps the university improve its operations and student experience.
+
+      🧑‍🎓 Each student is allowed to submit one response per department. Once you complete a department's survey form, click the "Submit" button at the bottom of that section to ensure your response is recorded.
+
+      You can give feedback on the following departments:
+      ⚠️Course Evaluation 
+      🔹Department of Student Affairs Services
+      🔹Department of Security Services
+      🔹Communications and Information Technology Centre
+      🔹Department of Finance
+      🔹Library
+      🔹Department of Facilities Management
+      🔹Faculty Services
+      🔹Department of Admissions and Credit Evaluation
+      🔹Department of Examinations and Credit Accumulation
+
+      ⚠️ Each student is required to fill out the "Course Evaluation" Survey before the end of each semester.
+      📝All responses are treated confidentially and are only accessible by authorized university personnel.
+      📝To access the survey, visit the official TAR UMT Services Survey page in Intranet
+      https://web.tarc.edu.my/portal/login.jsp
+      
+# Admission & Registration
+  utter_faq/course_enrollment:
+  - text: |
+      To register for a course, kindly visit our official website:
+      📝 Step-by-Step Guide navigating from TARUMT official landing page:
+      Step 1️⃣: Nationality
+      Malaysian Student – For local applicants. 
+      https://www.tarc.edu.my/admissions/index.jsp
+
+      International Student – For applicants from other countries. 
+      https://www.tarc.edu.my/international/index.jsp
+
+      Step 2️⃣: Select Your Course Level
+      Choose the appropriate level based on your academic background:
+
+      Pre-University – For students who wish to pursue a Foundation programme.
+      Undergraduate – For students aiming to study Diploma or Degree programmes.
+      Postgraduate – For students applying for Master's or higher-level studies. 
+
+      Step 3️⃣: Browse and Select the course you wish to apply. 
+
+      Step 4️⃣: Apply for Your Chosen Programme through "Apply Now". 
+
+      For detailed guide, 
+      Local Students: view https://www.tarc.edu.my/admissions/a/application-and-enrolment-status-enquiry/
+      Internation Students: view https://www.tarc.edu.my/international/application/application-process/
+
+  utter_faq/course_requirement:
+  - text: |
+      Entry requirements vary depending on the programme and level of study.
+
+      • Foundation: https://www.tarc.edu.my/files/admissions/202401/3AB441D8-3557-4DE6-8C29-A87A55E04DB8.pdf
+      • Diploma: https://www.tarc.edu.my/files/admissions/202401/C74B22FA-D2FC-40CE-9711-31807ABB5499.pdf
+      • Bachelor's Degree: https://www.tarc.edu.my/files/admissions/202401/511206A9-3013-433B-A307-9F9CAA4A9000.pdf
+
+      Required documents include:
+      • Certified copies of academic transcripts and certificates
+      • Passport-size photo
+      • IC or Passport (for international students)
+      • Application fee receipt
+
+      For more detailed information, 
+      you may visit the official website on  https://www.tarc.edu.my/ 🌐 and navigate to "Apply & Study" to view the latest entry requirements based on respective courses.
+
+  utter_faq/intakes:
+  - text: |
+      TAR UMT typically has three intakes per year:
+      • January
+      • May
+      • October
+
+      Application deadlines are usually:
+      • January intake: Early December
+      • May intake: Early April
+      • October intake: Early September
+
+      Specific deadlines are updated annually on the official TAR UMT website https://www.tarc.edu.my/ under the "Admissions" page.
+
+  utter_faq/student_ID_card:
+  - text: |
+      To register for your Student ID, follow these steps:
+
+      1️⃣ Login to the intranet at https://web.tarc.edu.my.
+
+      2️⃣ Navigate to Application → Student ID Card Photo and upload your photo.
+
+      📌 Note: Prepare one photo meeting the requirements for the Student ID.
+
+      ✅ After submission:
+
+      Wait for approval (includes library verification).
+
+      Once approved, walk in to the library to collect your Student ID card.
+
+  utter_faq/international_application:
+  - text: |
+      Yes, TAR UMT welcomes international students.
+      • You must meet equivalent academic qualifications to Malaysian standards.
+      • Proof of English proficiency (e.g., IELTS/TOEFL) may be required.
+      • A student visa (VAL) must be obtained through TAR UMT’s International Student Office.
+      • You'll need to submit your passport, academic certificates, English test scores, health declaration, and proof of funds.
+
+      You can find detailed steps and requirements on the TAR UMT's website for international students: https://www.tarc.edu.my/international/index.jsp
+
+# Fees and Financial Aid
+  utter_faq/scholarship_available:
+  - text: |
+      🎓 TAR UMT Scholarship & Aid Programs:
+      https://www.tarc.edu.my/dsa/financial-aid/scholarships-grants/
+
+      A. TAR UMT Administered Scholarships and Bursaries 
+
+      - TAR UMT Merit Scholarship
+      - Bursary for State/National Players (Application open from Week 1-7, Jan & June Semester)
+      - TAR UMT Sports Scholarship (Closed)
+      - The STAR Education Fund (Closed)
+      - Sin Chew Daily Education Fund (Closed)
+      - TAR UMT - JINBODHI Bursary (Closed)
+
+      B. External Scholarships / Grants (Need-Based)
+
+      - Bantuan Kewangan Pelajar OKU, Kementerian Pendidikan Malaysia (Open from Jan to Sept)
+      - C Y Tan Foundation [Diploma] (Closed)
+      - Kuok Foundation Study Grants [Diploma] (Closed)
+      - Kuok Foundation Undergraduate Awards  [Bachelor's] (Open from 16 Jul - 4 Aug 2025)
+      - Chan Kok Veng & Goh Joo Yi Scholarship [Foundation] (Closed)
+      - Arachem Scholarship [RBS & RFN] (Closed)
+      - Lee Ah Kwee Memorial Scholarship [Foundation] (Closed)
+      - Lee Ah Kwee Memorial Scholarship [FOBE Diploma] (Closed)
+      - LC1010 Club Malaysia Scholarship [FOET] (Closed)
+      - Budimas Scholarship (Ongoing)
+      - MSEF SIYUAN Scholarship (Closed)
+
+      C. External Scholarships / Grants (Industry-Based)
+
+      - Ann Joo Undergraduate Scholarship [Bachelor's] (Closed) 
+      - Shimano Scholarship [Bachelor's] (Open from 1 Jun - 31 Jul 2025) [APPLICATION FORM]
+      - Inta Bina Scholarship [RQS & RBD Year 2] (Open from 1 Jun - 31 Jul 2025) [APPLICATION FORM]
+      - Hotayi Scholarship [Bachelor's] (Open from 23 Jun - 31 Jul 2025) [APPLICATION FORM]
+      - Plenitude Scholarship [Bachelor's] (Open throughout the year)
+      - OSK Foundation Scholarship [Bachelor's] (Closes on 31 Jul 2025)
+      - Senheng Scholarship [Bachelor's] (Open from 1 - 31 Jul 2025) [APPLICATION FORM]
+      - Zchwantech Scholarship [FOCS Bachelor's] (Ongoing) [APPLICATION FORM]
+      - Yayasan Mr. D.I.Y. Scholarship [FAFB Bachelor's] (Closed)
+      - Yayasan Hartalega Scholarship [ Bachelor's](Open)
+      - Newfields Scholarship [Bachelor's] (Ongoing)
+      - CNC Freight Services Scholarship  [RLM] (Closed)
+      - The Heavy Lift Group Education Scholarship [RLM] (Closed) 
+      - Wilhelmsen Ocean Talent Scholarship [Bachelor's] (Open from 24 Jun - 24 Jul 2025)
+      - MDC Scholarship [Bachelor's](Closed)  
+      - Penang Future Foundation Scholarship (Open from 21 Jul - 15 Aug 2025)
+      - Hong Leong Foundation Scholarship (Closed)
+      - Gadang Scholarship (Closed) 
+      - Tan Sri Teh Hong Piow Legacy Scholarship (Closed)
+      - IOI Foundation Scholarship (Closed)
+      - Daikin Malaysia Group Scholarship (Closed)
+      - CIMB Asean Scholarship (Closed)
+      - Lion-Parkson Foundation Scholarship [Bachelor's] (Open from 2 Jul - 1 Sept)
+      - Yayasan KLK Scholarship (Closes on 19 Sept 2025)
+      - Genting Malaysia Scholarship (Closed) 
+      - Maxis Scholarship (Closes on 31 Jul 2025)
+
+      ⚠️ Annoucement will be made for new financial aids in the TAR UMT intranet portal.
+      
+  utter_faq/tuition_fees:
+  - text: |
+      Our tuition fees will vary according to:
+      1. International / Malaysians Students
+      2. Type of Programmes 
+
+      For more specific information about the tuition fees, you may refer to this official page from TAR UMT.
+      https://www.tarc.edu.my/bursary/malaysian-student-fees-guide/
+
+  utter_faq/misc_fees:
+  - text: |
+      Apart from tuition fee, student are required to pay for:
+
+      One-time Payment
+      Registration Fee               RM150        
+      Orientation & Activity Fee     RM120
+      Caution Money                  RM200
+
+      Payable each subsequent year by intake session.
+      Facilities & Resource Fee     RM200        
+      Insurance Premium             RM10
+      Laboratory / Workshop Fee     RM300-500 (relevent programme only)
+      Special Administration Fee    RM200  (relevent programme only)           
+
+      Payable in the final year of study
+      Award Assessment Fee          RM60-100        
+
+      For more specific information about the tuition fees, you may refer to this official page from TAR UMT.
+      https://www.tarc.edu.my/bursary/malaysian-student-fees-guide/
+
+  utter_faq/pay_fees:
+  - text: |
+      TAR UMT accepts several payment methods:
+      • Online Banking (FPX) via the TAR UMT Student Portal (Intranet)
+      • Bank Draft/Bank Transfer to designated TAR UMT accounts
+      • JomPAY via your banking app or website
+      • Payment at the Bursary counter (selected campuses)
+
+      ⚠️ Precaution
+      • Student bill is available in Student Intranet ONLY IF bill's issue date is greater than today's date.
+      • Public Bank e-banking service is not accessible if it is an Overdue Bill.
+      • Public Bank e-Banking service is available at least One Working Day after billing issue date.
+      • EFFECTIVE 11 SEPTEMBER 2017, student can pay student bill via JomPay
+
+      Click HERE for the full JomPAY guide.  
+      https://www.tarc.edu.my/bursary/doc/Guide_JomPAYPayment.pdf
+
+  utter_faq/financial_aid:
+  - text: |
+      Not to worry! TAR UMT offers various financial aid options:
+      • Internal scholarships and merit awards based on academic performance
+      • PTPTN loans for Malaysian citizens
+      • External sponsorships from government agencies and private organisations
+      • Bursary and hardship funds for eligible students
+
+      Navigate to this official TAR UMT financial-aid webpage to view more information:
+      https://www.tarc.edu.my/dsa/financial-aid/financial-aid/
+
+  utter_faq/ptptn_info:
+  - text: |
+      Eligibility to apply for PTPTN:
+      • You are a Malaysian citizen
+      • You are aged 45 years and below (which means mature students are eligible too!)
+      • The monthly (gross) income of parents or guardians does not exceed RM50,000 (after deducting RM250 per dependent)
+      • You must already have an offer to study at an institution of higher learning (both public and private institutions, including colleges, universities and polytechnics, are accepted)
+      • The course that you are pursuing is approved and accredited by MQA
+      • The remaining period of your study must not be less than one year
+      • You have no other sponsors
+      • You must have an SSPN-i savings account with 15 digits before sending in your application
+
+      Ready to apply? TAR UMT has just the guide for you!
+      https://www.tarc.edu.my/dsa/financial-aid/ptptn/
+
+# Facilities and Services
+  utter_faq/vehicle_pass:
+  - text: |
+      To register the vehicle pass, you may:
+      visit the intranet (https://web.tarc.edu.my) ➡ application ➡ vehicle pass entry 
+
+      The registration date for the vehicle entry pass may vary for each semester. 
+      For the specific open and closing date for vehicle entry pass registration, please check the latest announcement in the TARUMT application. 
+
+  utter_faq/bus_schedule_sgnibong:
+  - text: |
+      Sure! Here is the bus schedule for JUNE 2025 SEMESTER:
+
+      📍Route: Sungai Nibong (to Campus):
+      ☀ Days: Monday to Saturday
+      ⏰Departure Times: 7:20 AM and 9:40 AM
+
+      Jalan Scotland (Ramakrishna)
+      ⬇
+      Jalan Masjid Negeri (Greenlane / Island Glades)
+      ⬇
+      Jalan Sultan Azlan Shah (RECSAM / Opp. Terminal Bus)
+      ⬇
+      Jalan Tanjung Tokong (opposite TESCO)
+      ⬇
+      Jalan Lembah Permai (opposite Klinik Kesihatan)
+      ⬇
+      Campus
+
+
+
+      📍Route: Sungai Nibong (from Campus):
+      ☀ Days: Monday – Saturday
+      ⏰Departure Times: 3:15 PM & 5:15 PM
+
+
+      Taman Seri Setia
+      ⬇
+      Jalan Lembah Permai (Azuria Apartment)
+      ⬇
+      Jalan Tanjung Tokong (TESCO)
+      ⬇
+      Jalan Bagan Jermal (Phor Tay Private)
+      ⬇
+      Jalan Scotland
+      ⬇
+      Jalan Masjid Negeri (Greenlane / Island Glades)
+      ⬇
+      Jalan Sultan Azlan Shah (RECSAM / Opp. Terminal Bus)
+
+      For more information about the schedule of the bus, you can join the link below:
+      https://chat.whatsapp.com/FaeW1jkaCDhKvlKjb1cFTG
+
+  utter_faq/bus_schedule_jetty:
+  - text: |
+      Sure! Here is the bus schedule for JUNE 2025 SEMESTER:
+
+      📍Route: Jetty & Komtar (to Campus):
+      ☀ Days: Monday to Saturday
+      ⏰ Departure Times: 8:00 AM and 9:40 AM
+
+      Jetty
+      ⬇
+      Komtar (Ong Kongsi)
+      ⬇
+      Jalan Burma (SJKC Union)
+      ⬇
+      Jalan Mount Erskine
+      ⬇
+      Mont Residence
+      ⬇
+      Jalan Fettes
+      ⬇
+      Jalan Tanjung Tokong
+      ⬇
+      Jalan Sungai Kelian
+      ⬇
+      Campus
+
+      📍Route: Jetty & Komtar (from Campus):
+      ☀ Days: Monday to Saturday
+      ⏰ Departure Times: 3:15 PM and 5:15 PM
+
+      Campus
+      ⬇
+      Jalan Sungai Kelian
+      ⬇
+      Jalan Tanjung Tokong
+      ⬇
+      Jalan Fettes
+      ⬇
+      Mont Residence
+      ⬇
+      Jalan Mount Erskine
+      ⬇
+      Jalan Burma (Pulau Tikus)
+      ⬇
+      Komtar (Ong Kongsi)
+      ⬇
+      Jetty
+
+      For more information about the schedule of the bus, you can join the link below:
+      https://chat.whatsapp.com/FaeW1jkaCDhKvlKjb1cFTG
+
+  utter_faq/bus_schedule_farlim:
+  - text: |
+      Sure! Here is the bus schedule for JUNE 2025 SEMESTER:
+
+      📍Route: Farlim (to Campus):
+      ☀ Days: Monday to Saturday
+      ⏰ Departure Times: 7:20 AM and 9:40 AM
+
+      Caltex Farlim (Lone Pine / McDonald's)
+      ⬇
+      Lintang Angsana (Public Bank)
+      ⬇
+      Jalan Thean Teik (Sunshine Farlim / opposite SRJK Sin Kang)
+      ⬇
+      Jalan Air Itam (BHP Petrol)
+      ⬇
+      Jalan Boundary (O2 Clinic)
+      ⬇
+      Jalan Padang Tembak
+      ⬇
+      SJKC Shang Wu
+      ⬇
+      Jalan Scotland
+      ⬇
+      Jalan Tanjung Tokong
+      ⬇
+      Jalan Sungai Kelian (Hillside)
+      ⬇
+      Campus
+
+      📍Route: Farlim (from Campus):
+      ☀ Days: Monday to Saturday
+      ⏰ Departure Times: 3:15 PM and 5:15 PM
+
+      Campus
+      ⬇
+      Jalan Sungai Kelian
+      ⬇
+      Jalan Tanjung Bungah
+      ⬇
+      Jalan Tanjung Tokong (TESCO)
+      ⬇
+      Jalan Scotland
+      ⬇
+      SJKC Shang Wu
+      ⬇
+      Jalan Padang Tembak
+      ⬇
+      Jalan Boundary (O2 Clinic)
+      ⬇
+      Jalan Air Itam (opposite BHP Petrol)
+      ⬇
+      Jalan Thean Teik (SJKC Sin Kang / Sunshine Farlim)
+      ⬇
+      Jalan Angsana (Klinik Kesihatan Bandar Baru / Public Bank)
+      ⬇
+      Lebuhraya Thean Teik (Caltex / McDonald’s)
+
+      For more information about the schedule of the bus, you can join the link below:
+      https://chat.whatsapp.com/GF8kKM935rFIbKtn0WnQLk
+
+  utter_faq/facilities_book:
+  - text: |
+      To register for your Student ID, follow these steps:
+
+      1️⃣ Login to the intranet at https://web.tarc.edu.my.
+
+      2️⃣ Navigate to Application
+
+      3️⃣ Navigation to Facility Booking
+
+      4️⃣Click ➕New booking ➡ Sport facilities
+
+      📌To view availability facilities: 
+          Click availability chart ➡ Sport facilities 
+
+  utter_faq/facilities_list:
+  - text: |
+      TAR UMT provides a variety of campus facilities, including:
+
+      • Libraries and reading zones 📚
+
+      • Computer and science laboratories 🖥️
+
+      • Cafeterias and food stalls 🍗
+
+      • Sports Complex with gym, badminton courts, football field (only selected campus), calisthetic room, etc. 🎾
+
+      • Medical and counselling services 🏥
+
+      Facilities may differ slightly depending on the campus location.
+      Students has to make booking before using the facilities.
+      Students must bring their student identity card to the facilities to check-in and check-out.
+      Students who does not comply to the rules will be ban from booking TAR UMT facilities.
+      Students does not need to pay each time they book for facilities (fees are paid at each subsequent year by intake session).
+
+  utter_faq/student_support:
+  - text: |
+      Every student is appointed an academic advisor throughout their year of studying in TAR UMT. 
+      Students are more than welcome to contact their academic advisor if they have any trouble related to their academic.
+      To learn about your own academic advisor:
+      1. Go to TAR UMT intranet (https://web.tarc.edu.my/portal/login.jsp) and login.
+      2. Locate "Programme" at the sidebar, then click on "Academic Advisory"
+      3. Here you can see your academic advisor's name, email and available consultation hours.
+      4. Students can directly email their academic advisor to ask question or made an consultation appointment with their advisor.
+
+      If you prefer help by joining clubs and making new friends, you may:
+      Check out TAR UMT Peer Support Society (PSS)
+      Their instagram page: https://www.instagram.com/pss.penang.tarumt/?hl=en
+
+  utter_faq/library:
+  - text: |
+      TARUMT Library aims to provide a centralise location for students to access information resources, facilities and services to meet the reading, research and reference needs of both students and staff of the university. 
+
+      It provides services such as: 
+      - A library of books 
+      - Reading areas (Individual and Group tables)
+      - Discussion rooms 
+      - Public Computers and Wi-Fi 
+
+      The operating hours of the library is from Monday to Friday, 8:30am to 5:30pm and is closed on weekends and public holidays. 
+
+      Students are required to show a valid ID card to gain entry to the library, while new students who have yet to receive their student IDs shall gain access from the library staff. 
+
+      Please remember to be attired appropriately according to the University Guidelines and maintain silence at all times in the library. 
+
+      For the detailed rules and regulations to adhere in the library, please refer to the link provided: 
+      https://penang.tarc.edu.my/campus-life/library
+
+  utter_faq/map: 
+  - text: |
+      To view the full map of TARUMT Penang branch, you can visit this link for a detailed building guide to navigate around the campus. 
+      https://penang.tarc.edu.my/campus-life/building-guide
+
+# Academic Calender & Examination
+  utter_faq/timetable:
+  - text: |
+      The timetable will be published on the last Friday, Saturday or Sunday of Open Week. 
+
+      To view your timetable, you may:
+      Login to intranet (https://web.tarc.edu.my) ➡ Programme ➡ My Timetable ➡ View Timetable.
+
+      OR
+
+      To view more detail timetable, you may:
+      Login to TARCApp ➡ Login with Student ID and password ➡ Class Timetable
+
+      For the exact date or any updates, please check the official announcement in the TARUMT app.
+
+  utter_faq/academic_calender:
+  - text: |
+      You can download the official TAR UMT Academic Calendar from the website:
+      📅 https://www.tarc.edu.my/admissions/new-student/academic-calendar/
+
+      It includes key dates such as semester start/end, registration periods, study weeks, and exams.
+
+      Make sure to check regularly for updates based on your campus or faculty.
+
+  utter_faq/exam_slip:
+  - text: |
+      The examination authorisation slip acts as a permit for students to take their examination, as it contains all neccessary details including student's personal information and  their examination timetable. 
+
+      To print your examination slip, please follow these steps:
+
+      1️⃣ Login to the intranet at https://web.tarc.edu.my.
+
+      2️⃣ Navigate to Examination → Examination slip to print your slip.
+
+      📌 Note: Remember to print your examination authorisation slip on a clean white A4 size paper and bring your examination slip alonng with your student ID during exam duration, otherwise you will not be permitted to enter the examination room. 
+
+  utter_faq/exam_timetable:
+  - text: |
+      The examination timetable will be published in the last 3 to 4 week before the end of acedemic study . 
+
+      To view your examination timetable, you may:
+      Login to intranet (https://web.tarc.edu.my) ➡ Examination ➡ Examination Timetable ➡ View Timetable.
+
+      OR
+
+      To view a more detail timetable, you may:
+      Login to TARCApp ➡ Login with Student ID and password ➡ Examination Timetable
+
+      For the exact date or any updates, please check the official announcement in the TARUMT app or refer to your course lecturer for any further informaton.
+
+  utter_faq/exam_rules:
+  - text: |
+      🔒 Rules:
+      1️⃣ Cheating, attempting to cheat, helping others cheat, or any dishonest behaviour can result in serious disciplinary actions, including suspension or expulsion.
+
+      2️⃣ Candidates must print their examination authorisation slips in the correct format and bring them, along with their student ID or national identity card, to be admitted into the exam hall.
+
+      3️⃣ Students who arrive more than 30 minutes late will not be allowed to sit for the paper, and no one is allowed to leave the hall in the first or last 30 minutes of the exam.
+
+      4️⃣ No communication of any kind is allowed between candidates. Personal items like pencil cases and unauthorised electronics (smartwatches, phones not switched off, etc.) are banned.
+
+      5️⃣ Even a phone placed correctly under the chair but left switched on may cause a grade penalty if it rings or emits noise.
+
+      6️⃣ Answer scripts must be properly filled in with index numbers (not names), tied together with thread, and submitted to invigilators before leaving. No part of the script may be torn, separated, or taken out of the room.
+
+      👔 Candidate Responsibilities:
+      - Follow the dress code; improperly dressed candidates may be denied entry.
+      - Be present at the examination room at least 10 minutes early.
+      - Raise their hand and ask the invigilator if any help or clarification is needed.
+      - Review their timetable carefully and check for updates through official notice boards or the university intranet.
+
+      🤒 In Case of Emergency:
+      If a candidate is sick or unable to attend the exam, they must submit a written appeal and supporting documents (e.g., medical certificate) to the Department of Examinations within 48 hours of the missed paper.
+
+      For a more complete version of the rules of regulation during examination:
+      https://web.tarc.edu.my/portal/info/Exam/files/Examination_Rules_and_Regulations.pdf
+
+  utter_faq/exam_grading:
+  - text: |
+      Grade Marks and Grade Range are appointed and calcualted as below:
+      A   80 - 100 4.0000
+      A-  75 -  79 3.7500
+      B+  70 -  74 3.5000
+      B   65 -  69 3.0000
+      B-  60 -  64 2.7500
+      C+  55 -  59 2.5000
+      C   50 -  54 2.0000
+      F    0 -  49 0.0000
+
+      The Grade Point Average (GPA)
+      GPA= Total Quality Points for course(s) with CGPA bearing registered in a Semester / Total Credits for all course(s) with CGPA bearing in a Semester 
+
+      The Cumulative Grade Point Average (CGPA) 
+      CGPA =   Total Quality Points for course(s) with CGPA bearing for all Semesters / Total Credits for all course(s) with CGPA bearing in all Semesters
+
+      To study more about the grading system:
+      https://web.tarc.edu.my/portal/info/Exam/files/Examination%20Regulations%20510-%20Bachelor%20Degree%20Programmes.pdf 
+
+  utter_faq/exam_result:
+  - text: |
+      To view your examination result, you are required to follow these steps:
+
+      1️⃣ Login to the intranet at https://web.tarc.edu.my.
+
+      2️⃣ Navigate to Examination → Overall result / Semester result.
+      Overall result ➡ To view overall result in your acedemic study.
+      Sementer result ➡ To view the current semester result.
+
+      OR
+
+      1️⃣Login to TARCApp ➡ Login with Student ID and password ➡ Examination Result
+
+      2️⃣Select Semester / Overall 
+      Overall result ➡ To view overall result in your acedemic study.
+      Sementer result ➡ To view the current semester result.
+
+  utter_faq/exam_resit:
+  - text: |
+      🧭 Step-by-Step: Check Resit Availability in TARUMT Intranet
+      1️⃣. Login to intranet (https://web.tarc.edu.my) 
+      2️⃣. Navigate to the Examinations sections
+      3️⃣. Look for:
+            - Resit / Repeat Subject List
+            - Any subject marked as "R" (Repeat), "F" (Fail), or "I" (Incomplete)
+            - Gradesheet or Transcript View (some resit flags may appear next to the subject)
+      4️⃣. If resit is available, you will see:
+            - Subject Code & Name
+            - Status: Resit Required / Eligible for Resit
+            - Instructions for resit registration
+            - Link or form to apply/register (if manual registration is needed)
+
+  utter_faq/exam_appeal:
+  - text: |
+      ⚠️ If the grading result of final examination is not to your satisfaction you may try to appeal for a review!
+
+      📝 To appeal for a review of your final exam results, you must:
+
+      1️⃣ Login to student portal (Intranet)
+      https://web.tarc.edu.my/portal/login.jsp
+
+      2️⃣ Navigate to Appeal Page
+      On the sidebar, under "Examination", click on the "Appeal for Review of Final Results".
+
+      3️⃣ Submit your Appeal
+      During the duration stated when the appeal for review is open, students must make sure they submit their appeal during this period.
+      Otherwise, the page does not accept any new appeal after the open period.
+      Please note that a fee of RM50 will be charged for each course requested to appeal. 
+
+      You’ll be notified of the outcome once the review is completed.
+      Note: The re-evaluation result is final and cannot be appealed again.
+
+      - Students has to pay extra charges for appealing review of final result
+      - Appealing review for final result does not guaranteed the students to achieve higher grade.
+      - In a situation where the appeal result is lower than the original result, whichever grade is higher will be chosen.
+
+  utter_faq/barred:
+  - text: |
+      🚫 “Barring” means a student is temporarily not allowed to sit for examinations due to unresolved issues. This can be related to outstanding tuition fees, library fines, or incomplete attendance or documentation. It serves as a warning to settle matters before the exam period.
+
+      🧑‍🎓 Students may get barred for reasons such as:
+      • Unpaid tuition or miscellaneous fees
+      • Not meeting minimum attendance requirements
+      • Failure to return library books or clear fines
+      • Unresolved disciplinary issues
+
+      ⚠️ Student access to exam slips will be blocked. Students need to clear the issue immediately (e.g., pay outstanding fees) and inform your department to lift the barring status (Appeal) before the exams begin.
+
+  utter_faq/barred_list:
+  - text: |
+      📅 When will the Bar List Release?
+      For long semesters: It’s published on Monday of Week 13
+
+      For short semesters: It’s published on Monday of Week 6
+
+      Notices are sent via university email, student intranet, and possibly e-learning platforms. Students are advised to check these daily.
+
+  utter_faq/barred_check:
+  - text: |
+      ✅ How to Check If You Are Barred
+      🔹 Option 1: Check the Student Intranet
+      Go to the official TAR UMT Student Intranet: https://web.tarc.edu.my
+      Steps:
+      1️⃣Log in using your Student ID and password.
+      2️⃣Navigate to:
+          - Examination Services
+          - Then look for “Barred List” or “Exam Eligibility”
+      3️⃣If you are barred:
+          - Your subject name(s) and reason (e.g., “Low Attendance”) will appear
+          - The barred status is usually clearly labeled next to the affected subject(s)
+
+      🔹Option 2: Check Your TARUMT Email 
+      Go to: https://mymail.tarc.edu.my
+      Look for emails from:
+      Department of Student Affairs (DSA)
+      Faculty admin / coordinator
+      If you're barred, you should receive a notice with:
+      - Course Code(s)
+      - Barred reason (e.g., attendance below 80%)
+      - Instructions on appeal (if applicable)
+
+      If you’re still unsure:
+      Visit your faculty office in person
+      OR
+      Email your academic advisor / course coordinator
+      They can quickly verify your attendance and exam eligibility.
+
+  utter_faq/barred_solution:
+  - text: |
+      ✅ Step-by-Step: What to Do If You Are Barred
+      🔹 Step 1️⃣: Check Which Course(s) You Are Barred From
+      Log in to Student Intranet
+      → Go to Examination Services
+      → Check the Barred List
+
+      You’ll see which subject(s) you are barred from and the reason (usually low attendance).
+
+      🔹 Step 2️⃣: Decide Whether to Appeal
+      If you believe you have a valid reason (e.g., medical issue, family emergency), you can appeal the decision.
+
+      Valid reasons may include:
+      Hospitalization or medical condition (attach medical certificate)
+      Bereavement (proof required)
+      Accident or legal emergency
+
+      🔹 Step 3️⃣3: Prepare Your Appeal Documents
+      You’ll need to prepare:
+
+      A formal appeal letter (can be typed)
+      Supporting evidence (medical certificate, police report, etc.)
+      Your details: Full Name, Student ID, Programme, Subject Code
+
+      🔹 Step 4️⃣: Submit the Appeal
+      A google form will be sended out when the appear period is open (often a few week before final examination)
+
+      To check for the date of appeal, you may navigate to the "Barred List" section in Intranet.
+
+      ⚠️ Late appeals are usually rejected.
+
+      🔹 Step 5️⃣: Wait for the Faculty’s Decision
+      The faculty will review and approve or reject the appeal
+
+      ❌ If Your Appeal is Rejected (or You Don’t Appeal)
+      Then you must:
+
+      - Repeat the course in the next available semester
+      - Re-attend all lectures, tutorials/labs
+      - Pay repeat subject fees
+      - Resubmit all assignments
+      - Re-sit tests and final exam
+      - You will get a “Fail (Barred)” grade recorded for that subject.
