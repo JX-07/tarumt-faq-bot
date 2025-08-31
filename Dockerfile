@@ -18,4 +18,5 @@ RUN rasa train
 EXPOSE 5005
 
 # Run Rasa
-CMD ["rasa", "run", "--enable-api", "--cors", "*", "--debug"]
+CMD ["bash", "-c", "rasa train && rasa run --enable-api --port ${PORT:-5005} --host 0.0.0.0"]
+
