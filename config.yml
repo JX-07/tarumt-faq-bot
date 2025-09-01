@@ -15,8 +15,8 @@ pipeline:
 # # If you'd like to customize it, uncomment and adjust the pipeline.
 # # See https://rasa.com/docs/rasa/tuning-your-model for more information.
 - name: WhitespaceTokenizer
-#   - name: RegexFeaturizer
-#   - name: LexicalSyntacticFeaturizer
+- name: RegexFeaturizer
+- name: LexicalSyntacticFeaturizer
 - name: CountVectorsFeaturizer
 - name: CountVectorsFeaturizer
   analyzer: char_wb
@@ -29,9 +29,9 @@ pipeline:
 - name: ResponseSelector
   epochs: 100
 #     constrain_similarities: true
-#- name: FallbackClassifier
-#  threshold: 0.4
-#     ambiguity_threshold: 0.1
+- name: FallbackClassifier
+  threshold: 0.4
+  ambiguity_threshold: 0.1
 
 # Configuration for Rasa Core.
 # https://rasa.com/docs/rasa/core/policies/
