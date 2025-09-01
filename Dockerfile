@@ -10,14 +10,15 @@ RUN apt-get update && \
     git lfs install && \
     apt-get clean
 
-# Copy all project files into container
+# Copy project files
 COPY . .
 
-# Install Rasa and Rasa SDK
-RUN pip install --no-cache-dir rasa==3.6.21 rasa-sdk==3.6.1
+# Upgrade pip and install dependencies
+RUN python -m pip install --upgrade pip wheel setuptools
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose Rasa port (Render will set PORT env variable)
+# Expose Rasa port (Render sets $PORT automatically)
 EXPOSE 5005
 
-# Start Rasa server, use $PORT if set by Render
+# Start Rasa server
 CMD ["sh", "-c", "rasa run --enable-api --cors '*' --port ${PORT:-5005} --model models"]
