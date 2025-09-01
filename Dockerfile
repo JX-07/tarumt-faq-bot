@@ -4,6 +4,9 @@ FROM python:3.10-slim
 # Set working directory
 WORKDIR /app
 
+# Install git-lfs so Render can pull large model files
+RUN apt-get update && apt-get install -y git-lfs && git lfs install
+
 # Copy files
 COPY . /app
 
