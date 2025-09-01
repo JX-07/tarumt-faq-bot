@@ -15,4 +15,4 @@ RUN pip install -r requirements.txt
 EXPOSE 5005
 
 # Run Rasa
-CMD ["rasa", "run", "--enable-api", "--cors", "*", "--debug"]
+CMD ["rasa", "run", "--enable-api", "--port", "8080", "--host", "0.0.0.0"]
