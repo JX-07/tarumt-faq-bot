@@ -33,4 +33,4 @@ RUN echo '#!/bin/bash\n\
 EXPOSE $PORT
 
 # Use the start script
-CMD ["/app/start.sh"]
+CMD rasa run --enable-api --port $PORT --model models/tarumt-bot.tar.gz --cors "*"
