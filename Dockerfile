@@ -22,4 +22,4 @@ ENV PORT=5005
 EXPOSE ${PORT}
 
 # Run Rasa using PORT env variable
-CMD ["sh", "-c", "rasa run --enable-api --cors '*' --port $PORT --host 0.0.0.0 --model models"]
+CMD ["sh", "-c", "rasa run --enable-api --cors * --port $PORT --host 0.0.0.0 --model models"]
