@@ -15,11 +15,8 @@ COPY . .
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Render will set the PORT env variable
-ENV PORT=5005
-
 # Expose the port (whatever Render gives)
-EXPOSE ${PORT}
+EXPOSE 5005
 
 # Run Rasa using PORT env variable
-CMD ["sh", "-c", "rasa run --enable-api --cors * --port $PORT --host 0.0.0.0 --model models"]
+CMD ["sh", "-c", "rasa run --enable-api --cors '*' --port $PORT --host 0.0.0.0 --model models"]
