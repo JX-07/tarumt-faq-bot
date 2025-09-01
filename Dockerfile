@@ -18,7 +18,7 @@ RUN python -m pip install --upgrade pip wheel setuptools
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Expose Rasa port (Render sets $PORT automatically)
-EXPOSE 5005
+EXPOSE $PORT
 
 # Start Rasa server
 CMD rasa run --enable-api --port $PORT --model models
