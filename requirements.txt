@@ -1,0 +1,11 @@
+# Rasa core and SDK
+rasa==3.6.21
+rasa-sdk==3.6.1
+
+# Optional: If you use SQL or other storage
+sqlalchemy<2.0
+
+# Optional but recommended for HTTP requests in actions
+requests
+
+# Optional: Any other dependencies you need for custom actions
