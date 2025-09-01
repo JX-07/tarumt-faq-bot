@@ -19,4 +19,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 5005
 
 # Run Rasa server
-CMD ["rasa", "run", "--enable-api", "--cors", "*", "--port", "5005", "--model", "models"]
+CMD ["rasa", "run", "--enable-api", "--cors", "*", "--port", "5005", "--model", "models", "--host", "0.0.0.0"]
