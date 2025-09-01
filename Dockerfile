@@ -11,9 +11,6 @@ COPY . /app
 RUN pip install --no-cache-dir --upgrade pip wheel
 RUN pip install -r requirements.txt
 
-# Train model (if you want pre-trained, remove this and upload your models/)
-RUN rasa train
-
 # Expose port
 EXPOSE 5005
 
