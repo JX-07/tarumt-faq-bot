@@ -2,46 +2,232 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TARUMT FAQ Chatbot (RASA)</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f9;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #f4f4f9 0%, #e0e7ff 100%);
       margin: 0;
-      padding: 0;
+      padding: 20px;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
+      color: #333;
     }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      max-width: 600px;
+    }
+    
+    .logo {
+      width: 120px;
+      margin-bottom: 15px;
+    }
+    
+    h1 {
+      color: #2c3e50;
+      margin: 0 0 10px 0;
+      font-size: 28px;
+    }
+    
+    .subtitle {
+      color: #7f8c8d;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      max-width: 1200px;
+    }
+    
+    .info-panel {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      max-width: 350px;
+    }
+    
+    .info-panel h2 {
+      color: #3498db;
+      margin-top: 0;
+    }
+    
+    .info-list {
+      list-style-type: none;
+      padding: 0;
+    }
+    
+    .info-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .info-list li:last-child {
+      border-bottom: none;
+    }
+    
     #webchat {
       width: 350px;
       height: 500px;
-      border-radius: 10px;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+    }
+    
+    #webchat:hover {
+      transform: translateY(-5px);
+    }
+    
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      color: #7f8c8d;
+      font-size: 16px;
+    }
+    
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #3498db;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin-right: 10px;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      color: #7f8c8d;
+      font-size: 14px;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      #webchat {
+        width: 100%;
+        max-width: 350px;
+      }
     }
   </style>
 </head>
 <body>
-  <div id="webchat"></div>
+  <div class="header">
+    <h1>TARUMT FAQ Chatbot</h1>
+    <p class="subtitle">Get instant answers to your questions about Tunku Abdul Rahman University of Management and Technology</p>
+  </div>
+  
+  <div class="container">
+    <div class="info-panel">
+      <h2>Common Questions</h2>
+      <ul class="info-list">
+        <li>✔️ Admission requirements</li>
+        <li>✔️ Program information</li>
+        <li>✔️ Application deadlines</li>
+        <li>✔️ Tuition fees</li>
+        <li>✔️ Scholarship opportunities</li>
+        <li>✔️ Campus facilities</li>
+        <li>✔️ Student life</li>
+      </ul>
+      <p>Our virtual assistant is available 24/7 to help with your inquiries about TARUMT.</p>
+    </div>
+    
+    <div id="webchat">
+      <div class="loading">
+        <div class="spinner"></div>
+        <span>Loading chatbot...</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer">
+    <p>© 2023 TARUMT - RASA Powered FAQ Chatbot</p>
+  </div>
 
-  <!-- Rasa Webchat Browser Build -->
-  <script src="https://cdn.jsdelivr.net/npm/rasa-webchat@0.12.1/lib/index.js"></script>
+  <!-- Load Rasa Webchat with callback after script loads -->
   <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      window.Webchat.init({
-        selector: "#webchat",
-        initPayload: "/start",
-        customData: {"language": "en"},
-        socketUrl: "https://tarumt-faq-bot-production.up.railway.app",
-        socketPath: "/socket.io/",
-        title: "TARUMT FAQ Bot",
-        showCloseButton: true,
-        storage: "session"  // session storage for individual users
-      });
-    });
+    // Function to initialize the chat after the script loads
+    function initWebchat() {
+      // Check if Webchat is available
+      if (window.Webchat && typeof window.Webchat.init === 'function') {
+        // Remove loading indicator
+        const webchatElement = document.getElementById('webchat');
+        webchatElement.innerHTML = '';
+        
+        // Initialize the chat
+        window.Webchat.init({
+          selector: "#webchat",
+          initPayload: "/start",
+          customData: {"language": "en"},
+          socketUrl: "https://tarumt-faq-bot-production.up.railway.app",
+          socketPath: "/socket.io/",
+          title: "TARUMT FAQ Bot",
+          subtitle: "How can I help you today?",
+          showCloseButton: true,
+          fullScreenMode: false,
+          storage: "session",
+          profileAvatar: "https://i.imgur.com/5WcwnK7.png",
+          params: {"storage": "session"}
+        });
+      } else {
+        // Show error if Webchat is not available
+        document.getElementById('webchat').innerHTML = `
+          <div style="padding: 20px; text-align: center; color: #e74c3c;">
+            <p>Sorry, there was an error loading the chat.</p>
+            <button onclick="location.reload()" style="background: #3498db; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+              Try Again
+            </button>
+          </div>
+        `;
+      }
+    }
+
+    // Load the script dynamically
+    function loadWebchatScript() {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/rasa-webchat@0.12.1/lib/index.js';
+      script.onload = initWebchat;
+      script.onerror = function() {
+        document.getElementById('webchat').innerHTML = `
+          <div style="padding: 20px; text-align: center; color: #e74c3c;">
+            <p>Failed to load chatbot. Please check your connection.</p>
+            <button onclick="loadWebchatScript()" style="background: #3498db; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+              Retry
+            </button>
+          </div>
+        `;
+      };
+      document.head.appendChild(script);
+    }
+
+    // Start loading the script when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadWebchatScript);
+    } else {
+      loadWebchatScript();
+    }
   </script>
 </body>
 </html>
-
