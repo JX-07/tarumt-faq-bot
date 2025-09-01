@@ -17,8 +17,11 @@ COPY . .
 RUN python -m pip install --upgrade pip wheel setuptools
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Train the RASA model with a fixed name
+RUN rasa train --fixed-model-name tarumt-bot
+
 # Expose Rasa port (Render sets $PORT automatically)
 EXPOSE $PORT
 
-# Start Rasa server
-CMD sh -c "rasa run --enable-api --port ${PORT:-5005} --model models"
+# Start Rasa server with the specific model file
+CMD rasa run --enable-api --port ${PORT:-5005} --model models/tarumt-bot.tar.gz
