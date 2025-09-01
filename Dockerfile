@@ -21,4 +21,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE $PORT
 
 # Start Rasa server
-CMD rasa run --enable-api --port $PORT --model models
+CMD sh -c "rasa run --enable-api --port ${PORT:-5005} --model models"
