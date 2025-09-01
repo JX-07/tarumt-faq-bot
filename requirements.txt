@@ -1,6 +1,5 @@
 # Rasa core and SDK
 rasa==3.6.21
-rasa-sdk==3.6.1
 
 # Optional: If you use SQL or other storage
 sqlalchemy<2.0
