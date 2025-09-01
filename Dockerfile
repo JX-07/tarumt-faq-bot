@@ -6,6 +6,7 @@ WORKDIR /app
 
 # Install git-lfs so Render can pull large model files
 RUN apt-get update && apt-get install -y git-lfs && git lfs install
+RUN git submodule update --init --recursive
 
 # Copy files
 COPY . /app
