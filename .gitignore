@@ -1,0 +1,12 @@
+# Ignore large files
+*.tar.gz
+*.zip
+*.sqlite
+
+# Ignore cache
+__pycache__/
+*.pyc
+
+# Ignore old Rasa models except latest
+models/*
+!models/latest-model.tar.gz
