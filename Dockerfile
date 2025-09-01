@@ -1,22 +1,22 @@
-# Use Python 3.10 base
 FROM python:3.10-slim
 
-# Set working directory
+# Install system deps
+RUN apt-get update && apt-get install -y git-lfs
+
+# Enable git-lfs (important for your large Rasa models)
+RUN git lfs install
+
+# Set work directory
 WORKDIR /app
 
-# Install git-lfs so Render can pull large model files
-RUN apt-get update && apt-get install -y git-lfs && git lfs install
-RUN git submodule update --init --recursive
-
-# Copy files
-COPY . /app
+# Copy project files
+COPY . .
 
 # Install dependencies
-RUN pip install --no-cache-dir --upgrade pip wheel
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Expose port
+# Expose Rasa port
 EXPOSE 5005
 
-# Run Rasa
-CMD ["run", "--enable-api", "--cors", "*", "--host", "0.0.0.0", "--port", "5005"]
+# Run Rasa server
+CMD ["rasa", "run", "--enable-api", "--cors", "*", "--port", "5005", "--model", "models"]
