@@ -218,7 +218,7 @@
         }
         
         // Initialize the chat with latest RASA Webchat API
-        window.WebChat.default({
+          window.WebChat.default({
           initPayload: '/get_started',
           customData: {"language": "en"},
           socketUrl: "https://tarumt-faq-bot-production.up.railway.app",
@@ -231,7 +231,7 @@
           showFullScreenButton: true,
           showMessageDate: true,
           storage: 'session'
-        }, '#webchat'); //webchat is the id of the container this thing will display at
+        }).insertAfter(document.getElementById('webchat'); 
         
       } catch (error) {
         console.error('Failed to initialize Webchat:', error);
