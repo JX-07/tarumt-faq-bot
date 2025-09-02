@@ -201,7 +201,7 @@
     document.addEventListener('DOMContentLoaded', initWebchat());
 
     function initWebchat() {
-    if (typeof window.Webchat === 'undefined') {
+    if (typeof window.WebChat === 'undefined') {
       // If it's not ready yet, check again in 100ms
       setTimeout(initWebchat, 100);
       return;
