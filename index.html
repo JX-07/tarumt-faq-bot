@@ -96,6 +96,8 @@
       height: 100%;
       color: #7f8c8d;
       font-size: 16px;
+      flex-direction: column;
+      gap: 15px;
     }
     
     .spinner {
@@ -105,12 +107,37 @@
       width: 30px;
       height: 30px;
       animation: spin 1s linear infinite;
-      margin-right: 10px;
     }
     
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
+    }
+    
+    .error {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      text-align: center;
+      padding: 20px;
+      color: #e74c3c;
+    }
+    
+    .btn {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 15px;
+    }
+    
+    .btn:hover {
+      background: #2980b9;
     }
     
     .footer {
@@ -155,7 +182,7 @@
     </div>
     
     <div id="webchat">
-      <div class="loading">
+      <div class="loading" id="loading">
         <div class="spinner"></div>
         <span>Loading chatbot...</span>
       </div>
@@ -166,15 +193,27 @@
     <p>© 2023 TARUMT - RASA Powered FAQ Chatbot</p>
   </div>
 
-  <!-- Load Rasa Webchat with callback after script loads -->
+  <!-- Load Rasa Webchat directly instead of dynamically -->
+  <script src="https://cdn.jsdelivr.net/npm/rasa-webchat@0.12.1/lib/index.js"></script>
   <script>
-    // Function to initialize the chat after the script loads
-    function initWebchat() {
+    // Wait for both DOM and Webchat script to load
+    document.addEventListener('DOMContentLoaded', function() {
       // Check if Webchat is available
-      if (window.Webchat && typeof window.Webchat.init === 'function') {
+      if (typeof window.Webchat !== 'undefined' && typeof window.Webchat.init === 'function') {
+        initializeWebchat();
+      } else {
+        // If not available, show error
+        showError('Failed to load chatbot script. Please check your internet connection.');
+      }
+    });
+
+    function initializeWebchat() {
+      try {
         // Remove loading indicator
-        const webchatElement = document.getElementById('webchat');
-        webchatElement.innerHTML = '';
+        const loadingElement = document.getElementById('loading');
+        if (loadingElement) {
+          loadingElement.style.display = 'none';
+        }
         
         // Initialize the chat
         window.Webchat.init({
@@ -191,12 +230,23 @@
           profileAvatar: "https://i.imgur.com/5WcwnK7.png",
           params: {"storage": "session"}
         });
-      } else {
-        // Show error if Webchat is not available
-        document.getElementById('webchat').innerHTML = `
-          <div style="padding: 20px; text-align: center; color: #e74c3c;">
-            <p>Sorry, there was an error loading the chat.</p>
-            <button onclick="location.reload()" style="background: #3498db; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+        
+      } catch (error) {
+        console.error('Failed to initialize Webchat:', error);
+        showError('Failed to initialize chatbot: ' + error.message);
+      }
+    }
+
+    function showError(message) {
+      const webchatElement = document.getElementById('webchat');
+      if (webchatElement) {
+        webchatElement.innerHTML = `
+          <div class="error">
+            <h3>Connection Error</h3>
+            <p>${message}</p>
+            <p>Please check if your RASA server is running at:</p>
+            <p style="font-size: 12px; word-break: break-all;">https://tarumt-faq-bot-production.up.railway.app</p>
+            <button class="btn" onclick="window.location.reload()">
               Try Again
             </button>
           </div>
@@ -204,30 +254,12 @@
       }
     }
 
-    // Load the script dynamically
-    function loadWebchatScript() {
-      const script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/npm/rasa-webchat@0.12.1/lib/index.js';
-      script.onload = initWebchat;
-      script.onerror = function() {
-        document.getElementById('webchat').innerHTML = `
-          <div style="padding: 20px; text-align: center; color: #e74c3c;">
-            <p>Failed to load chatbot. Please check your connection.</p>
-            <button onclick="loadWebchatScript()" style="background: #3498db; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
-              Retry
-            </button>
-          </div>
-        `;
-      };
-      document.head.appendChild(script);
-    }
-
-    // Start loading the script when DOM is ready
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', loadWebchatScript);
-    } else {
-      loadWebchatScript();
-    }
+    // Fallback: If the script doesn't load after 10 seconds, show error
+    setTimeout(function() {
+      if (typeof window.Webchat === 'undefined') {
+        showError('Chatbot script is taking too long to load. Please check your connection.');
+      }
+    }, 10000);
   </script>
 </body>
 </html>
