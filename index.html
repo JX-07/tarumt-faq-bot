@@ -83,6 +83,7 @@
       overflow: hidden;
       box-shadow: 0 6px 20px rgba(0,0,0,0.15);
       transition: transform 0.3s ease;
+      background: white;
     }
     
     #webchat:hover {
@@ -193,13 +194,13 @@
     <p>© 2023 TARUMT - RASA Powered FAQ Chatbot</p>
   </div>
 
-  <!-- Load Rasa Webchat directly instead of dynamically -->
-  <script src="https://cdn.jsdelivr.net/npm/rasa-webchat@0.12.1/lib/index.js"></script>
+  <!-- Load latest Rasa Webchat -->
+  <script src="https://cdn.jsdelivr.net/npm/rasa-webchat@1.0.1/lib/index.min.js"></script>
   <script>
     // Wait for both DOM and Webchat script to load
     document.addEventListener('DOMContentLoaded', function() {
       // Check if Webchat is available
-      if (typeof window.Webchat !== 'undefined' && typeof window.Webchat.init === 'function') {
+      if (typeof window.Webchat !== 'undefined') {
         initializeWebchat();
       } else {
         // If not available, show error
@@ -215,21 +216,22 @@
           loadingElement.style.display = 'none';
         }
         
-        // Initialize the chat
-        window.Webchat.init({
-          selector: "#webchat",
-          initPayload: "/start",
+        // Initialize the chat with latest RASA Webchat API
+        window.Webchat({
+          initPayload: '/get_started',
           customData: {"language": "en"},
-          socketUrl: "https://tarumt-faq-bot-production.up.railway.app/webhooks/rest/webhook",
+          socketUrl: "https://tarumt-faq-bot-production.up.railway.app",
           socketPath: "/socket.io/",
           title: "TARUMT FAQ Bot",
           subtitle: "How can I help you today?",
-          showCloseButton: true,
-          fullScreenMode: false,
-          storage: "session",
+          inputTextFieldHint: "Type your message here...",
+          connectingText: "Connecting to TARUMT FAQ Bot...",
+          hideWhenNotConnected: true,
           profileAvatar: "https://i.imgur.com/5WcwnK7.png",
-          params: {"storage": "session"}
-        });
+          showFullScreenButton: true,
+          showMessageDate: true,
+          storage: 'session'
+        }, '#webchat');
         
       } catch (error) {
         console.error('Failed to initialize Webchat:', error);
@@ -256,7 +258,8 @@
 
     // Fallback: If the script doesn't load after 10 seconds, show error
     setTimeout(function() {
-      if (typeof window.Webchat === 'undefined') {
+      const loadingElement = document.getElementById('loading');
+      if (loadingElement && loadingElement.style.display !== 'none') {
         showError('Chatbot script is taking too long to load. Please check your connection.');
       }
     }, 10000);
