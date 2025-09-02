@@ -196,20 +196,50 @@
 
   <!-- Load latest Rasa Webchat -->
   <script src="https://cdn.jsdelivr.net/npm/rasa-webchat@1.0.1/lib/index.min.js"></script>
-  <script>
-    // Wait for both DOM and Webchat script to load
-    document.addEventListener('DOMContentLoaded', function() {
-      // Check if Webchat is available
-      if (typeof window.Webchat !== 'undefined') {
+<script>
+    // Track script loading state
+    let scriptLoaded = false;
+    let domLoaded = false;
+    
+    // Function to initialize webchat when both conditions are met
+    function tryInitializeWebchat() {
+      if (scriptLoaded && domLoaded) {
         initializeWebchat();
-      } else {
-        // If not available, show error
-        showError('Failed to load chatbot script. Please check your internet connection.');
       }
+    }
+    
+    // Load the script programmatically with better error handling
+    function loadWebchatScript() {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/rasa-webchat@1.0.1/lib/index.min.js';
+      script.onload = function() {
+        scriptLoaded = true;
+        tryInitializeWebchat();
+      };
+      script.onerror = function() {
+        console.error('Failed to load Rasa Webchat script');
+        showError('Failed to load chatbot script. Please check your internet connection and try again.');
+      };
+      document.head.appendChild(script);
+    }
+    
+    // DOM ready state
+    document.addEventListener('DOMContentLoaded', function() {
+      domLoaded = true;
+      tryInitializeWebchat();
     });
-
+    
+    // Initialize the webchat
     function initializeWebchat() {
       try {
+        // Check if Webchat is available
+        if (typeof window.Webchat === 'undefined') {
+          showError('Webchat library not loaded correctly. Trying again...');
+          // Try to reload the script
+          setTimeout(loadWebchatScript, 2000);
+          return;
+        }
+        
         // Remove loading indicator
         const loadingElement = document.getElementById('loading');
         if (loadingElement) {
@@ -226,7 +256,7 @@
           subtitle: "How can I help you today?",
           inputTextFieldHint: "Type your message here...",
           connectingText: "Connecting to TARUMT FAQ Bot...",
-          hideWhenNotConnected: true,
+          hideWhenNotConnected: false,
           profileAvatar: "https://i.imgur.com/5WcwnK7.png",
           showFullScreenButton: true,
           showMessageDate: true,
@@ -256,11 +286,14 @@
       }
     }
 
+    // Start loading the script
+    loadWebchatScript();
+    
     // Fallback: If the script doesn't load after 10 seconds, show error
     setTimeout(function() {
       const loadingElement = document.getElementById('loading');
       if (loadingElement && loadingElement.style.display !== 'none') {
-        showError('Chatbot script is taking too long to load. Please check your connection.');
+        showError('Chatbot is taking too long to load. Please check your connection and refresh the page.');
       }
     }, 10000);
   </script>
