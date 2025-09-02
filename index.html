@@ -205,6 +205,8 @@
       // If it's not ready yet, check again in 100ms
       setTimeout(initWebchat, 100);
       return;
+    } else {
+      initializeWebchat();
     }
 
 
