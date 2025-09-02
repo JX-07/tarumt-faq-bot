@@ -3,7 +3,3 @@ rasa==3.5.17
 
 # Optional: If you use SQL or other storage
 sqlalchemy<2.0
-
-numpy==1.21.6
-
-tensorflow==2.9.3
