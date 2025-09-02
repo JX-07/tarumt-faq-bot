@@ -1,10 +1,9 @@
 # Rasa core and SDK
-rasa==3.6.21
+rasa==3.5.17
 
 # Optional: If you use SQL or other storage
 sqlalchemy<2.0
 
-# Optional but recommended for HTTP requests in actions
-requests
+numpy==1.21.6
 
-# Optional: Any other dependencies you need for custom actions
+tensorflow==2.9.3
