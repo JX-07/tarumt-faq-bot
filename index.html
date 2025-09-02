@@ -198,15 +198,15 @@
   <!-- Load latest Rasa Webchat -->
   <script>
     // Wait for both DOM and Webchat script to load
-    document.addEventListener('DOMContentLoaded', function() {
-      // Check if Webchat is available
-      if (typeof window.Webchat !== 'undefined') {
-        initializeWebchat();
-      } else {
-        // If not available, show error
-        showError('Failed to load chatbot script. Please check your internet connection.');
-      }
-    });
+    document.addEventListener('DOMContentLoaded', initWebchat());
+
+    function initWebchat() {
+    if (typeof window.Webchat === 'undefined') {
+      // If it's not ready yet, check again in 100ms
+      setTimeout(initWebchat, 100);
+      return;
+    }
+
 
     function initializeWebchat() {
       try {
